@@ -23,16 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
         row.innerHTML = `
             <div class="item-desc">
                 <label class="mobile-label">Descripción</label>
-                <input type="text" class="item-description" placeholder="Repuesto / Insumo" required>
+                <input type="text" class="item-description" placeholder="Repuesto / Insumo">
             </div>
             <div class="item-row-inner">
                 <div class="item-cant">
                     <label class="mobile-label">Cant.</label>
-                    <input type="number" class="item-quantity" min="1" value="1" placeholder="Cant" required>
+                    <input type="number" class="item-quantity" value="1" step="any" inputmode="decimal" placeholder="Cant">
                 </div>
                 <div class="item-prec">
                     <label class="mobile-label">Precio U.</label>
-                    <input type="number" class="item-price" min="0" step="100" placeholder="Precio ($)" required>
+                    <input type="number" class="item-price" step="any" inputmode="decimal" placeholder="Precio ($)">
                 </div>
             </div>
             <button type="button" class="btn btn-danger item-del" title="Eliminar">✕</button>
@@ -92,14 +92,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const cliente = document.getElementById('cliente').value.trim();
         const vehiculo = document.getElementById('vehiculo').value.trim();
         const patente = document.getElementById('patente').value.trim();
+        const kilometraje = document.getElementById('kilometraje')?.value.trim();
+        const motor = document.getElementById('motor')?.value.trim();
+        const vin = document.getElementById('vin')?.value.trim();
         const trabajoDesc = document.getElementById('trabajoDesc').value.trim();
 
         const totals = updateTotals();
 
         let message = `*PRESUPUESTO MECÁNICO*\n\n`;
-        message += `*Cliente:* ${cliente}\n`;
-        message += `*Vehículo:* ${vehiculo}\n`;
-        message += `*Patente:* ${patente}\n\n`;
+        if (cliente) message += `*Cliente:* ${cliente}\n`;
+        if (vehiculo) message += `*Vehículo:* ${vehiculo}\n`;
+        if (patente) message += `*Patente:* ${patente}\n`;
+        if (kilometraje) message += `*Kilometraje:* ${kilometraje}\n`;
+        if (motor) message += `*Motor:* ${motor}\n`;
+        if (vin) message += `*VIN/Chasis:* ${vin}\n`;
+        message += `\n`;
 
         message += `*⚙️ REPUESTOS E INSUMOS:*\n`;
         const itemRows = document.querySelectorAll('.item-row');
@@ -121,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         message += `\n*Subtotal Repuestos:* ${totals.formatter.format(totals.subtotalRepuestos)}\n\n`;
 
         message += `*🔧 MANO DE OBRA:*\n`;
-        message += `Detalle: ${trabajoDesc}\n`;
+        if (trabajoDesc) message += `Detalle: ${trabajoDesc}\n`;
         message += `*Subtotal Mano de Obra:* ${totals.formatter.format(totals.manoObra)}\n\n`;
 
         message += `*💰 TOTAL PRESUPUESTO: ${totals.formatter.format(totals.granTotal)}*\n\n`;

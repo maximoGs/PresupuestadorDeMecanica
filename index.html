@@ -20,15 +20,29 @@
                 <h2>1. Datos del Vehículo</h2>
                 <div class="form-group">
                     <label for="cliente">Cliente</label>
-                    <input type="text" id="cliente" placeholder="Nombre del cliente" required>
+                    <input type="text" id="cliente" placeholder="Nombre del cliente">
                 </div>
                 <div class="form-group">
                     <label for="vehiculo">Vehículo</label>
-                    <input type="text" id="vehiculo" placeholder="Marca, Modelo, Año" required>
+                    <input type="text" id="vehiculo" placeholder="Marca, Modelo, Año">
                 </div>
                 <div class="form-group">
                     <label for="patente">Patente</label>
-                    <input type="text" id="patente" placeholder="AAA111 o AA111AA" required>
+                    <input type="text" id="patente" placeholder="AAA111 o AA111AA">
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label for="kilometraje">Kilometraje</label>
+                        <input type="text" id="kilometraje" placeholder="Ej: 85.000 km">
+                    </div>
+                    <div>
+                        <label for="motor">Motor</label>
+                        <input type="text" id="motor" placeholder="Ej: 1.6 16v">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="vin">VIN / Chasis</label>
+                    <input type="text" id="vin" placeholder="Número de chasis">
                 </div>
             </section>
 
@@ -54,11 +68,11 @@
                 <h2>3. Mano de Obra</h2>
                 <div class="form-group">
                     <label for="trabajoDesc">Descripción del Trabajo</label>
-                    <textarea id="trabajoDesc" rows="3" placeholder="Detalle del trabajo a realizar..." required></textarea>
+                    <textarea id="trabajoDesc" rows="3" placeholder="Detalle del trabajo a realizar..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="trabajoCosto">Costo de Mano de Obra ($)</label>
-                    <input type="number" id="trabajoCosto" min="0" step="100" placeholder="0.00" required>
+                    <input type="number" id="trabajoCosto" step="any" inputmode="decimal" placeholder="0.00">
                 </div>
             </section>
 
