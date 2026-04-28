@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Presupuestos Automotores</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Generador de Presupuestos</h1>
+            <p>Taller Mecánico</p>
+        </header>
+
+        <form id="budgetForm">
+            <!-- Datos del Cliente / Vehículo -->
+            <section class="card">
+                <h2>1. Datos del Vehículo</h2>
+                <div class="form-group">
+                    <label for="cliente">Cliente</label>
+                    <input type="text" id="cliente" placeholder="Nombre del cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="vehiculo">Vehículo</label>
+                    <input type="text" id="vehiculo" placeholder="Marca, Modelo, Año" required>
+                </div>
+                <div class="form-group">
+                    <label for="patente">Patente</label>
+                    <input type="text" id="patente" placeholder="AAA111 o AA111AA" required>
+                </div>
+            </section>
+
+            <!-- Repuestos -->
+            <section class="card">
+                <h2>2. Repuestos / Items</h2>
+                <div class="form-group item-headers" style="display:none;" id="desktopHeaders">
+                    <div style="display: grid; grid-template-columns: 1fr 80px 100px 40px; gap: 10px; margin-bottom: 5px; color: var(--text-secondary); font-size: 0.85rem;">
+                        <span>Descripción</span>
+                        <span>Cant.</span>
+                        <span>Precio U.</span>
+                        <span></span>
+                    </div>
+                </div>
+                <div id="itemsContainer">
+                    <!-- Los items se agregarán aquí dinámicamente -->
+                </div>
+                <button type="button" id="addItemBtn" class="btn btn-secondary">+ Agregar Repuesto</button>
+            </section>
+
+            <!-- Mano de Obra -->
+            <section class="card">
+                <h2>3. Mano de Obra</h2>
+                <div class="form-group">
+                    <label for="trabajoDesc">Descripción del Trabajo</label>
+                    <textarea id="trabajoDesc" rows="3" placeholder="Detalle del trabajo a realizar..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="trabajoCosto">Costo de Mano de Obra ($)</label>
+                    <input type="number" id="trabajoCosto" min="0" step="100" placeholder="0.00" required>
+                </div>
+            </section>
+
+            <!-- Totales -->
+            <section class="card totals-card">
+                <h2>Resumen</h2>
+                <div class="total-row">
+                    <span>Subtotal Repuestos:</span>
+                    <span id="subtotalRepuestos">$0.00</span>
+                </div>
+                <div class="total-row">
+                    <span>Mano de Obra:</span>
+                    <span id="subtotalManoObra">$0.00</span>
+                </div>
+                <div class="total-row grand-total">
+                    <span>Total Presupuesto:</span>
+                    <span id="granTotal">$0.00</span>
+                </div>
+            </section>
+
+            <button type="submit" id="sendBtn" class="btn btn-primary">Enviar Presupuesto por WhatsApp</button>
+        </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
